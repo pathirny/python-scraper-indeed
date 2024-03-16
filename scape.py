@@ -14,12 +14,13 @@ salary = []
 job_description = []
 job_list = []
 
-# look at the page 
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=option)
-
 # run in Incognito mode
 option = webdriver.ChromeOptions()
 option.add_argument("--incognito")
+# look at the page 
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=option)
+
+
 # set the link
 url = f"https://uk.indeed.com/m/jobs?q={job_title}&radius=25&filter=0&l={location}"
 # # get the amount of jobs for the search
