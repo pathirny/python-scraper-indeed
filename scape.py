@@ -27,7 +27,7 @@ driver.get(url)
 amount_of_jobs = driver.find_element(By.CLASS_NAME, 'jobsearch-JobCountAndSortPane-jobCount').text
 # # get amount of jobs per page to iterate over pages
 max_pages = int(amount_of_jobs.split(' ')[0])//15
-for i in range(0, max_pages):
+for i in range(max_pages):
     driver.get(f"{url}&start={i * 15}")
     time.sleep(random.randint(2, 4))
 
@@ -38,9 +38,9 @@ for i in range(0, max_pages):
         job_title = j.find_element(By.CLASS_NAME, "jobTitle")
         
 
-        job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href")#, 
-                        #  job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
-                        #  j.find_element(By.CLASS_NAME, "companyName").text,
+        job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), 
+                         job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
+                         j.find_element(By.ID, "company-name").text
                         #  j.find_element(By.CLASS_NAME, "companyLocation").text,
                         #  j.find_element(By.CLASS_NAME, "date").text,
                         #  job_title.find_element(By.CLASS_NAME, "a").get_attribute("href")
