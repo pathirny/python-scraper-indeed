@@ -35,20 +35,23 @@ for i in range(max_pages):
     jobs = job_page.find_elements(By.CLASS_NAME, "job_seen_beacon")
     print(job_page)
     for j in jobs:
+        
         job_title = j.find_element(By.CLASS_NAME, "jobTitle")
         
 
         job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), 
-                         job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
-                         j.find_element(By.ID, "company-name").text
-                        #  j.find_element(By.CLASS_NAME, "companyLocation").text,
-                        #  j.find_element(By.CLASS_NAME, "date").text,
-                        #  job_title.find_element(By.CLASS_NAME, "a").get_attribute("href")
-                         ])
-# driver.quit()
+                        job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
+                        j.find_element(By.CSS_SELECTOR, "span[data-testid='companyName']").text,
+                        j.find_element(By.CSS_SELECTOR, "div[data-testid='text-location']").text,
+                        j.find_element(By.CLASS_NAME, "date").text,
+                        job_title.find_element(By.CLASS_NAME, "a").get_attribute("href")])
+        
+
+driver.quit()
 
 end = time.time()
 print(end - start, "seconds to complete search")
 print("-------------------")
 print("Amount of jobs: ", amount_of_jobs)
 print("Max amount of pages for this search: ", max_pages)
+print(job_list)
