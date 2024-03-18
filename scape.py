@@ -28,21 +28,22 @@ amount_of_jobs = driver.find_element(By.CLASS_NAME, 'jobsearch-JobCountAndSortPa
 # # get amount of jobs per page to iterate over pages
 max_pages = int(amount_of_jobs.split(' ')[0])//15
 for i in range(0, max_pages):
-    driver.get(url.format(job, location,i* 10))
-    sleep = time.sleep(random.randint(2, 4))
+    driver.get(f"{url}&start={i * 15}")
+    time.sleep(random.randint(2, 4))
 
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
     jobs = job_page.find_elements(By.CLASS_NAME, "job_seen_beacon")
-
+    print(job_page)
     for j in jobs:
         job_title = j.find_element(By.CLASS_NAME, "jobTitle")
         
 
-        job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
-                         j.find_element(By.CLASS_NAME, "companyName").text,
-                         j.find_element(By.CLASS_NAME, "companyLocation").text,
-                         j.find_element(By.CLASS_NAME, "date").text,
-                         job_title.find_element(By.CLASS_NAME, "a").get_attribute("href")
+        job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href")#, 
+                        #  job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
+                        #  j.find_element(By.CLASS_NAME, "companyName").text,
+                        #  j.find_element(By.CLASS_NAME, "companyLocation").text,
+                        #  j.find_element(By.CLASS_NAME, "date").text,
+                        #  job_title.find_element(By.CLASS_NAME, "a").get_attribute("href")
                          ])
 # driver.quit()
 
