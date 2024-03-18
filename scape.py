@@ -44,8 +44,7 @@ for i in range(max_pages):
         job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), 
                         job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
                         company_name,
-                        company_location,
-                        job_title.find_element(By.CLASS_NAME, "a").get_attribute("href")
+                        company_location
                         ])
         
 
@@ -57,3 +56,7 @@ print("-------------------")
 print("Amount of jobs: ", amount_of_jobs)
 print("Max amount of pages for this search: ", max_pages)
 print(job_list)
+
+with open('jobs.csv', 'w', newline='') as csvfile:
+    jobwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    jobwriter.writerow(job_list)
