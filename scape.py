@@ -37,6 +37,13 @@ for i in range(0, max_pages):
     for j in jobs:
         job_title = j.find_element(By.CLASS_NAME, "jobTitle")
         
+
+        job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
+                         j.find_element(By.CLASS_NAME, "companyName").text,
+                         j.find_element(By.CLASS_NAME, "companyLocation").text,
+                         j.find_element(By.CLASS_NAME, "date").text,
+                         job_title.find_element(By.CLASS_NAME, "a").get_attribute("href")
+                         ])
 # driver.quit()
 
 end = time.time()
