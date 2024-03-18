@@ -36,15 +36,16 @@ for i in range(max_pages):
     print(job_page)
     for j in jobs:
         
-        job_title = j.find_element(By.CLASS_NAME, "jobTitle")
-        
-
+        job_title = j.find_element(By.CLASS_NAME, "jobTitle") 
+        company_name = j.find_element(By.XPATH, "//span[@data-testid='company-name']").text
+        company_location = j.find_element(By.XPATH, "div[data-testid='text-location']").text
         job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), 
                         job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
-                        j.find_element(By.CSS_SELECTOR, "span[data-testid='companyName']").text,
-                        j.find_element(By.CSS_SELECTOR, "div[data-testid='text-location']").text,
-                        j.find_element(By.CLASS_NAME, "date").text,
-                        job_title.find_element(By.CLASS_NAME, "a").get_attribute("href")])
+                        company_name,
+                        # j.find_element(By.CSS_SELECTOR, "div[data-testid='text-location']").text,
+                        # j.find_element(By.CLASS_NAME, "date").text,
+                        # job_title.find_element(By.CLASS_NAME, "a").get_attribute("href")
+                        ])
         
 
 driver.quit()
