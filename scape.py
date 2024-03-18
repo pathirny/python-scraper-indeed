@@ -22,7 +22,7 @@ option.add_argument("--incognito")
 # look at the page 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=option)
 driver.get(url)
-
+fields = ["Job Title", "URL", "ID", "Company Name", "Location"]
 # set the link
 # # get the amount of jobs for the search
 amount_of_jobs = driver.find_element(By.CLASS_NAME, 'jobsearch-JobCountAndSortPane-jobCount').text
@@ -59,4 +59,5 @@ print(job_list)
 
 with open('jobs.csv', 'w', newline='') as csvfile:
     jobwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-    jobwriter.writerow(job_list)
+    jobwriter.writerow(fields)
+    jobwriter.writerows(job_list)
