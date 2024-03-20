@@ -56,7 +56,7 @@ print("-------------------")
 print("Amount of jobs: ", amount_of_jobs)
 print("Max amount of pages for this search: ", max_pages)
 print(job_list)
-
+# find a way to get fields in Columns and rows as the scraped information
 with open('jobs.csv', 'w', newline='') as csvfile:
     jobwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
     jobwriter.writerow(fields)
