@@ -58,8 +58,11 @@ print("Max amount of pages for this search: ", max_pages)
 print(job_list)
 # find a way to get fields in Columns and rows as the scraped information
 with open('jobs.csv', 'w', newline='') as csvfile:
-    jobwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-    jobwriter.writerow(fields)
-    jobwriter.writerows(job_list)
+    jobwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+    for word in job_list:
+        jobwriter([word])
+    # jobwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    # jobwriter.writerow(fields)
+    # jobwriter.writerows(job_list)
 
 # create api to visualise the data
