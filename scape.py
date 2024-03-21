@@ -59,7 +59,8 @@ print(job_list)
 # find a way to get fields in Columns and rows as the scraped information
 with open('jobs.csv', 'w', newline='') as csvfile:
     jobwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-    jobwriter.writerows(fields)
+    #jobwriter.writerows(fields)
+    jobwriter.writerow(fields)
     for word in job_list:
         jobwriter.writerows([word])
     # jobwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
