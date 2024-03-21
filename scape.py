@@ -6,6 +6,7 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 import random
 import csv
+from flask import Flask
 # set job title and location
 start = time.time()
 job = "Junior+Software+Engineer"
@@ -68,3 +69,9 @@ with open('jobs.csv', 'w', newline='') as csvfile:
     # jobwriter.writerows(job_list)
 
 # create api to visualise the data
+        
+app = Flask(__name__)
+
+@app.route("/")
+def indeedData():
+    return "API is working"
