@@ -6,7 +6,7 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 import random
 import csv
-from flask import Flask
+from flask import Flask, jsonify
 # set job title and location
 start = time.time()
 job = "Junior+Software+Engineer"
@@ -74,4 +74,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def indeedData():
-    return "API is working"
+    return jsonify(job_list)
