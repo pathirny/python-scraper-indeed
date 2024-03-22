@@ -68,6 +68,16 @@ with open('jobs.csv', 'w', newline='') as csvfile:
     # jobwriter.writerow(fields)
     # jobwriter.writerows(job_list)
 
+# convert the 2 list (fields and job_list) into dictionary
+# result = {}
+
+# for key in fields:
+#     for value in job_list:
+#         result[key] = value
+#         job_list.remove(value)
+#         break
+
+
 # create api to visualise the data
         
 app = Flask(__name__)
