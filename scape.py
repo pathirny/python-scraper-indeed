@@ -7,6 +7,7 @@ import time
 import random
 import csv
 from flask import Flask, jsonify
+import json
 # set job title and location
 start = time.time()
 job = "Junior+Software+Engineer"
@@ -57,7 +58,7 @@ print(end - start, "seconds to complete search")
 print("-------------------")
 print("Amount of jobs: ", amount_of_jobs)
 print("Max amount of pages for this search: ", max_pages)
-print(job_list)
+#print(job_list)
 # find a way to get fields in Columns and rows as the scraped information
 with open('jobs.csv', 'w', newline='') as csvfile:
     jobwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
@@ -70,19 +71,25 @@ with open('jobs.csv', 'w', newline='') as csvfile:
     # jobwriter.writerows(job_list)
 
 # convert the 2 list (fields and job_list) into dictionary
-# result = {}
+result = {}
 
-# for key in fields:
-#     for value in job_list:
-#         result[key] = value
-#         job_list.remove(value)
-#         break
+for key in fields:
+    print(key)
+    for value in job_list:
+        print(value)
+        result[key] = value
+        job_list.remove(value)
+        break
 
 
 # create api to visualise the data
-        
-app = Flask(__name__)
+#print(result)
+      
+# app = Flask(__name__)
 
-@app.route("/")
-def indeedData():
-    return jsonify(job_list)
+# @app.route("/", methods=['GET'])
+# def indeedData():
+#     return jsonify(result)
+
+# if __name__ == '__main__':
+#     app.run(port=5000)
