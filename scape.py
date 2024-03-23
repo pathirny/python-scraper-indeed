@@ -76,20 +76,20 @@ result = {}
 for key in fields:
     #print(key)
     for value in job_list:
-        #print(value)
+        print(value)
         result[key] = value
         job_list.remove(value)
         break
 
-print(result)
+########## each job return a array which contains all the info in an array, will need another for loop to iterate over each element?
 # create api to visualise the data
 #print(result)
       
-app = Flask(__name__)
+# app = Flask(__name__)
 
-@app.route("/", methods=['GET'])
-def indeedData():
-    return result
+# @app.route("/", methods=['GET'])
+# def indeedData():
+#     return result
 
-if __name__ == '__main__':
-    app.run(port=5000)
+# if __name__ == '__main__':
+#     app.run(port=5000)
