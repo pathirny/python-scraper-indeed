@@ -37,7 +37,7 @@ for i in range(max_pages):
 
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
     jobs = job_page.find_elements(By.CLASS_NAME, "job_seen_beacon")
-    print(job_page)
+    #print(job_page)
     for j in jobs:
         
         job_title = j.find_element(By.CLASS_NAME, "jobTitle") 
@@ -66,30 +66,30 @@ with open('jobs.csv', 'w', newline='') as csvfile:
     jobwriter.writerow(fields)
     for word in job_list:
         jobwriter.writerows([word])
-    # jobwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-    # jobwriter.writerow(fields)
-    # jobwriter.writerows(job_list)
+        jobwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        jobwriter.writerow(fields)
+        jobwriter.writerows(job_list)
 
 # convert the 2 list (fields and job_list) into dictionary
 result = {}
 
 for key in fields:
-    print(key)
+    #print(key)
     for value in job_list:
-        print(value)
+        #print(value)
         result[key] = value
         job_list.remove(value)
         break
 
-
+print(result)
 # create api to visualise the data
 #print(result)
       
-# app = Flask(__name__)
+app = Flask(__name__)
 
-# @app.route("/", methods=['GET'])
-# def indeedData():
-#     return jsonify(result)
+@app.route("/", methods=['GET'])
+def indeedData():
+    return result
 
-# if __name__ == '__main__':
-#     app.run(port=5000)
+if __name__ == '__main__':
+    app.run(port=5000)
