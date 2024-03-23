@@ -19,7 +19,7 @@ url = f"https://uk.indeed.com/m/jobs?q={job}&radius=25&filter=0&l={location}"
 
 # run in Incognito mode
 option = webdriver.ChromeOptions()
-option.add_argument("--incognito")
+option.add_argument("start-maximized")
 # look at the page 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=option)
 driver.get(url)
@@ -33,8 +33,7 @@ for i in range(max_pages):
     driver.get(f"{url}&start={i * 15}")
     time.sleep(random.randint(2, 4))
     # have to verify that program is human
-    human_verification = driver.find_element(By.CLASS_NAME, "ctp-checkbox-label")
-    human_verification.click()
+
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
     jobs = job_page.find_elements(By.CLASS_NAME, "job_seen_beacon")
     print(job_page)
