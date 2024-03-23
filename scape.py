@@ -76,10 +76,12 @@ result = {}
 for key in fields:
     #print(key)
     for value in job_list:
-        print(value)
-        result[key] = value
-        job_list.remove(value)
-        break
+        for i in value:
+
+            print(i)
+            result[key] = value
+            job_list.remove(value)
+            break
 
 ########## each job return a array which contains all the info in an array, will need another for loop to iterate over each element?
 # create api to visualise the data
