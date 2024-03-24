@@ -90,13 +90,12 @@ jobListCopied = [['Software Engineer - Modelling and Simulation', 'https://uk.in
 #     #print(key)
 #### value in jobListCopied gets individual lists in the ist(array)
 for value in jobListCopied:
-    print(value)
     for key in fields:
-        for i in value:
+        for i in value:  # Iterate over a copy of value
             result[key] = i
+            print(result[key])
             value.remove(i)
     
-print(result)
 ########## each job return a array which contains all the info in an array, will need another for loop to iterate over each element?
 # create api to visualise the data
 #print(result)
