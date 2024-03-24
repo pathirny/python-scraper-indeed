@@ -73,6 +73,16 @@ with open('jobs.csv', 'w', newline='') as csvfile:
 # convert the 2 list (fields and job_list) into dictionary
 result = {}
 
+dummy_list = [["job1", "url1", "id1", "companyName1", "location1"], ["job2", "url2", "id2", "companyName2", "location2"]]
+
+attempt_list = []
+
+
+for list in dummy_list:
+    for item in list:
+        attempt_list.append(item)
+
+print(attempt_list)
 for key in fields:
     #print(key)
     for value in job_list:
