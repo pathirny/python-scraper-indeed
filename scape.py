@@ -94,13 +94,10 @@ for jobs in jobListCopied:
     for i in jobs:
         jobsList.append(i)
     
-for key in fields:
-    for job in jobsList:
-        result[key]
-        print(result)
-        jobsList.remove(job)
+for key, value in zip(fields, jobsList):
+    result[key] = value
         
-
+print(result)
 ########## each job return a array which contains all the info in an array, will need another for loop to iterate over each element?
 # create api to visualise the data
 #print(result)
