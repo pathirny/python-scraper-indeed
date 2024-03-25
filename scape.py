@@ -8,6 +8,7 @@ import random
 import csv
 from flask import Flask, jsonify
 import json
+from flask_cors import CORS, cross_origin
 # set job title and location
 start = time.time()
 job = "Junior+Software+Engineer"
@@ -96,11 +97,12 @@ json_result = json.dumps(result)
 #print(result)
       
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 
 @app.route("/", methods=['GET'])
+@cross_origin(supports_credentials=True)
 def indeedData():
-    for job in result:
-        return json_result
+    return json_result
 
 if __name__ == '__main__':
     app.run(port=5000)
