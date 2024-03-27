@@ -44,7 +44,6 @@ for i in range(max_pages):
         job_title = j.find_element(By.CLASS_NAME, "jobTitle") 
         company_name = j.find_element(By.XPATH, "//span[@data-testid='company-name']").text
         company_location = j.find_element(By.XPATH, "//div[@data-testid='text-location']").text
-        salary = j.find_element(By.CSS_SELECTOR, "salary-snippet-container")
         job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), 
                         job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
                         company_name,
@@ -52,7 +51,13 @@ for i in range(max_pages):
                         salary
                         ])
         
-
+        try:
+            salary.append(j.find_element(By.CLASS_NAME, "salary-snippet-container").text)
+        except NoSuchElementException:
+            try:
+                salary.append(j.find_element(By.CLASS_NAME, "estimated-salary").text)
+            except NoSuchElementException:
+                salary.append("None")
 driver.quit()
 
 end = time.time()
@@ -89,7 +94,7 @@ result = []
 #     #print(key)
 
 for job in job_list:
-    job_dict = dict(zip(fields, job))
+    job_dict = dict(zip(fields, job, salary))
     result.append(job_dict)
 
 json_result = json.dumps(result)
