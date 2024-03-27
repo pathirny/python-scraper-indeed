@@ -25,7 +25,7 @@ option.add_argument("start-maximized")
 # look at the page 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=option)
 driver.get(url)
-fields = ["Job Title", "URL", "ID", "Company Name", "Location"]
+fields = ["Job Title", "URL", "ID", "Company Name", "Location", "Salary"]
 # set the link
 # # get the amount of jobs for the search
 amount_of_jobs = driver.find_element(By.CLASS_NAME, 'jobsearch-JobCountAndSortPane-jobCount').text
@@ -44,7 +44,7 @@ for i in range(max_pages):
         job_title = j.find_element(By.CLASS_NAME, "jobTitle") 
         company_name = j.find_element(By.XPATH, "//span[@data-testid='company-name']").text
         company_location = j.find_element(By.XPATH, "//div[@data-testid='text-location']").text
-        salary = j.find_element(By.CLASS_NAME, "salary-snippet-container")
+        salary = j.find_element(By.CSS_SELECTOR, "salary-snippet-container")
         job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), 
                         job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
                         company_name,
