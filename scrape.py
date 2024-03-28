@@ -74,7 +74,9 @@ with open('jobs.csv', 'w', newline='') as csvfile:
         jobwriter.writerows([word])
         jobwriter = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
         jobwriter.writerows(job_list)
-    
+        for pay in salary:
+            jobwriter.writerows(salary)
+
 # convert the 2 list (fields and job_list) into dictionary
 result = []
 
