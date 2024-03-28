@@ -89,13 +89,15 @@ for job, sal in zip(job_list, salary):
 
 json_result = json.dumps(result)
 ########## each job return a array which contains all the info in an array, will need another for loop to iterate over each element?
-print(job_dict)
+print(result)
 # # find a way to get fields in Columns and rows as the scraped information
+
+field_names = list(job_dict.keys())
 with open('jobs.csv', 'w', newline='') as csvfile:
-    jobwriter = csv.DictWriter(csvfile, fieldnames=fields)
-    #jobwriter.writerows(fields)
+    jobwriter = csv.DictWriter(csvfile, fieldnames=field_names)
     jobwriter.writeheader()
-    for job in job_dict:
+    
+    for job in result:
         jobwriter.writerow(job)
 
 # create api to visualise the data
