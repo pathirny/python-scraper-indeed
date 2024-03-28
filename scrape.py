@@ -65,14 +65,7 @@ print("-------------------")
 print("Amount of jobs: ", amount_of_jobs)
 print("Max amount of pages for this search: ", max_pages)
 #print(job_list)
-# # find a way to get fields in Columns and rows as the scraped information
-with open('jobs.csv', 'w', newline='') as csvfile:
-    jobwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-    #jobwriter.writerows(fields)
-    jobwriter.writerow(fields)
 
-    for job in job_list:
-        jobwriter.writerows(job_list + [salary])
 # convert the 2 list (fields and job_list) into dictionary
 result = []
 
@@ -96,9 +89,18 @@ for job, sal in zip(job_list, salary):
 
 json_result = json.dumps(result)
 ########## each job return a array which contains all the info in an array, will need another for loop to iterate over each element?
+print(job_dict)
+# # find a way to get fields in Columns and rows as the scraped information
+with open('jobs.csv', 'w', newline='') as csvfile:
+    jobwriter = csv.DictWriter(csvfile, fieldnames=fields)
+    #jobwriter.writerows(fields)
+    jobwriter.writeheader()
+    for job in job_dict:
+        jobwriter.writerow(job)
+
 # create api to visualise the data
 #print(result)
-      
+     
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
