@@ -44,3 +44,6 @@ main {
   background-color: aliceblue;
   border-radius: 10px;
 }
+li {
+  list-style: none;
+}
