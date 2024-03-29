@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  overflow: hidden;
   background-color: #70c1b3;
 }
 
@@ -36,7 +37,10 @@ input {
   border-radius: 50px;
 }
 main {
-  height: 90vh;
+  height: 80vh;
+  overflow-y: scroll;
+  width: 60vw;
   margin: 4rem auto;
   background-color: aliceblue;
+  border-radius: 10px;
 }
