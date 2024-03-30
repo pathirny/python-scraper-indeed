@@ -16,12 +16,14 @@ async function getData() {
     const showInHtml = data.map((item) => {
       console.log(item);
       return `
+      <a href=${item.URL} target=”_blank”>
         <ul class="jobs">
                 <li>${item.job_title}</li>
                 <li>${item.Company_Name}</li>
                 <li>${item.Location}</li>
                 <li>${item.salary}</li>
               </ul>
+        </a>
         `;
     });
 
