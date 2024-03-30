@@ -46,14 +46,15 @@ main {
 }
 li {
   list-style: none;
-  padding: 1.5rem;
+  padding: 1.1rem;
 }
 .jobs {
   display: flex;
   width: 30vw;
-}
-#jobs {
-  margin-left: 2rem;
+  padding: 2rem;
   background-color: rgba(250, 235, 215, 0.548);
-  width: 32.2vw;
+}
+#listOfJobs {
+  display: flex;
+  justify-content: center;
 }
