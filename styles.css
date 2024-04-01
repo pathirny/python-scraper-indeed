@@ -22,7 +22,8 @@ form {
   justify-content: center;
   background-color: aliceblue;
   height: 5vh;
-  width: 28vw;
+  padding-left: 1rem;
+  padding-right: 1rem;
   border-radius: 50px;
 }
 nav {
