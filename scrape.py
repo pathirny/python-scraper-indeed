@@ -40,15 +40,19 @@ for i in range(max_pages):
     jobs = job_page.find_elements(By.CLASS_NAME, "job_seen_beacon")
     #print(job_page)
     for j in jobs:
+        try:
+            job_title = j.find_element(By.CLASS_NAME, "jobTitle") 
+        except NoSuchElementException:
+            job_title = "None"
         
-        job_title = j.find_element(By.CLASS_NAME, "jobTitle") 
         try:
             company_name = j.find_element(By.XPATH, "//span[@data-testid='company-name']").text
         except NoSuchElementException:
             company_name = "None"
         company_location = j.find_element(By.XPATH, "//div[@data-testid='text-location']").text
 
-        job_list.append([job_title.text, job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), 
+        job_list.append([job_title,
+                        job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), 
                         job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
                         company_name,
                         company_location,
