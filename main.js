@@ -21,7 +21,7 @@ async function getData() {
                 <li>${item.job_title}</li>
                 <li>${item.Company_Name}</li>
                 <li>${item.Location}</li>
-                <li>${item.salary}</li>
+                <li>${item.Salary}</li>
               </ul>
         </a>
         `;
