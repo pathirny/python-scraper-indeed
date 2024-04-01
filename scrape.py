@@ -51,7 +51,7 @@ for i in range(max_pages):
             company_name = "None"
         company_location = j.find_element(By.XPATH, "//div[@data-testid='text-location']").text
 
-        job_list.append([job_title,
+        job_list.append([job_title.text,
                         job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("href"), 
                         job_title.find_element(By.CSS_SELECTOR, "a").get_attribute("id"),
                         company_name,
