@@ -9,6 +9,8 @@ import csv
 from flask import Flask, jsonify, Response
 import json
 from flask_cors import CORS, cross_origin
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # set job title and location
 start = time.time()
@@ -41,7 +43,8 @@ max_pages = int(amount_of_jobs.split(' ')[0])//15
 for i in range(max_pages):
     driver.get(f"{url}&start={i * 15}")
     time.sleep(random.randint(2, 4))
-    
+    wait = WebDriverWait(driver, 10)
+    title_element = wait.until(EC.presence_of_all_elements_located((By.CLASS_NAME, "jobTitle")))
     # have to verify that program is human
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
     jobs = job_page.find_elements(By.CLASS_NAME, "job_seen_beacon")
