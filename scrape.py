@@ -51,6 +51,11 @@ for i in range(max_pages):
     for j in jobs:
         try:
             job_title = j.find_element(By.CLASS_NAME, "jobTitle")
+            if not job_title:
+                try:
+                    job_title = j.find_element(By.ID, "jobTitle")
+                except NoSuchElementException:
+                    job_title = "None"
             job_link = job_title.find_element(By.TAG_NAME, "a").get_attribute("href")
             job_id = job_title.find_element(By.TAG_NAME, "a").get_attribute("id")
             job_title_text = job_title.text
