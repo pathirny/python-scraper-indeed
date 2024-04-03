@@ -26,7 +26,7 @@ url = f"https://uk.indeed.com/m/jobs?q={job}&radius=25&filter=0&l={location}"
 
 # run in Incognito mode
 option = webdriver.ChromeOptions()
-option.add_argument("start-maximized")
+option.add_argument("--incognito")
 # look at the page 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=option)
 driver.get(url)
@@ -51,11 +51,6 @@ for i in range(max_pages):
     for j in jobs:
         try:
             job_title = j.find_element(By.CLASS_NAME, "jobTitle")
-            if not job_title:
-                try:
-                    job_title = j.find_element(By.ID, "jobTitle")
-                except NoSuchElementException:
-                    job_title = "None"
             job_link = job_title.find_element(By.TAG_NAME, "a").get_attribute("href")
             job_id = job_title.find_element(By.TAG_NAME, "a").get_attribute("id")
             job_title_text = job_title.text
