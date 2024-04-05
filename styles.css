@@ -66,3 +66,7 @@ li {
 a {
   text-decoration: none;
 }
+footer {
+  width: 100vw;
+  background-color: red;
+}
