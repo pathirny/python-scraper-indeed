@@ -41,7 +41,8 @@ amount_of_jobs = driver.find_element(By.CLASS_NAME, 'jobsearch-JobCountAndSortPa
 max_pages = int(amount_of_jobs.split(' ')[0])//15
 # this iterates over each page on the search
 for i in range(max_pages):
-    driver.get(f"{url}&start={i * 10}")
+    # this loads the URL and iterates over each page
+    driver.get(f"{url}&start={i * max_pages}")
     time.sleep(random.randint(2, 4))
     
     # have to verify that program is human
@@ -113,6 +114,7 @@ CORS(app, support_credentials=True)
 @app.route("/", methods=['GET'])
 @cross_origin(supports_credentials=True)
 def indeedData():
+    json_result = json.dumps(result)
     return Response(json_result, content_type='application/json')
 
 if __name__ == '__main__':
