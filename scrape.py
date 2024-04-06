@@ -50,7 +50,7 @@ for i in range(max_pages):
     # this gets the mosaicResults
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
     jobs = job_page.find_elements(By.CLASS_NAME, "job_seen_beacon")
-    # iterate over the results (jobs)
+    # iterate over the results (jobs) - iterating over each job 
     for j in jobs:
         try:
             job_title = j.find_element(By.CLASS_NAME, "jobTitle")
