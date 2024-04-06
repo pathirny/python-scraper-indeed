@@ -41,8 +41,9 @@ amount_of_jobs = driver.find_element(By.CLASS_NAME, 'jobsearch-JobCountAndSortPa
 max_pages = int(amount_of_jobs.split(' ')[0])//15
 # this iterates over each page on the search
 for i in range(max_pages):
-    # this loads the URL and iterates over each page
+    # this loads the URL and iterates over each page - max_pages 
     driver.get(f"{url}&start={i * max_pages}")
+    # time.sleep to give the page time to render all contents
     time.sleep(random.randint(2, 4))
     
     # have to verify that program is human
