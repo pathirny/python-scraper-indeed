@@ -41,11 +41,9 @@ amount_of_jobs = driver.find_element(By.CLASS_NAME, 'jobsearch-JobCountAndSortPa
 max_pages = int(amount_of_jobs.split(' ')[0])//15
 # this iterates over each page on the search
 for i in range(max_pages):
-    # driver.get(f"{url}&start={i * max_pages}")
-    time.sleep(random.randint(4, 8))
+    driver.get(f"{url}&start={i * 10}")
+    time.sleep(random.randint(2, 4))
     
-    # find the Next arror at the bottom of the page
-    next_arrow = driver.find_element(By.XPATH, "//a[@data-testid='pagination-page-next']")
     # have to verify that program is human
     # this gets the mosaicResults
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
@@ -83,11 +81,8 @@ for i in range(max_pages):
                 salary_snippet = "None"
                 
         salary.append(salary_snippet)
-    try:
-        next_arrow.click()
-    except NoSuchElementException:
-        driver.quit()
-        
+
+driver.quit()
 end = time.time()
 
 print(end - start, "seconds to complete search")
