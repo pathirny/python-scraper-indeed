@@ -51,7 +51,6 @@ for i in range(max_pages):
     # this gets the mosaicResults
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
     # all jobs have a job_seen_beacon
-    # jobs = job_page.find_elements(By.CLASS_NAME, "job_seen_beacon")
     # iterate over the results (jobs) - iterating over each job 
     jobs = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "job_seen_beacon")))
 
