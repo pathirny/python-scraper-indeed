@@ -36,11 +36,11 @@ fields = ["job_title", "URL", "ID", "Company_Name", "Location", "Salary"]
 # set the link
 # # get the amount of jobs for the search
 amount_of_jobs = driver.find_element(By.CLASS_NAME, 'jobsearch-JobCountAndSortPane-jobCount').text
-
 # # get amount of jobs per page to iterate over pages
 max_pages = int(amount_of_jobs.split(' ')[0])//15
 # this iterates over each page on the search
 for i in range(max_pages):
+    print(i)
     # this loads the URL and iterates over each page - max_pages 
     driver.get(f"{url}&start={i * max_pages}")
     # time.sleep to give the page time to render all contents
