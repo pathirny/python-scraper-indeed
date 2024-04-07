@@ -39,19 +39,22 @@ amount_of_jobs = driver.find_element(By.CLASS_NAME, 'jobsearch-JobCountAndSortPa
 # # get amount of jobs per page to iterate over pages
 max_pages = int(amount_of_jobs.split(' ')[0])//15
 # this iterates over each page on the search
+
 for i in range(max_pages):
     print(i)
     # this loads the URL and iterates over each page - max_pages 
     driver.get(f"{url}&start={i * max_pages}")
     # time.sleep to give the page time to render all contents
-    time.sleep(random.randint(2, 4))
+    
     
     # have to verify that program is human
     # this gets the mosaicResults
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
     # all jobs have a job_seen_beacon
-    jobs = job_page.find_elements(By.CLASS_NAME, "job_seen_beacon")
+    # jobs = job_page.find_elements(By.CLASS_NAME, "job_seen_beacon")
     # iterate over the results (jobs) - iterating over each job 
+    jobs = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "job_seen_beacon")))
+
     for j in jobs:
         try:
             job_title = j.find_element(By.CLASS_NAME, "jobTitle")
