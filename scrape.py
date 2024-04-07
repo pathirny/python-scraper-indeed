@@ -41,7 +41,6 @@ max_pages = int(amount_of_jobs.split(' ')[0])//15
 # this iterates over each page on the search
 
 for i in range(max_pages):
-    print(i)
     # this loads the URL and iterates over each page - max_pages 
     driver.get(f"{url}&start={i * max_pages}")
     # time.sleep to give the page time to render all contents
@@ -102,8 +101,6 @@ for job, sal in zip(job_list, salary):
     result.append(job_dict)
 
 json_result = json.dumps(result)
-
-
 field_names = list(fields)
 with open('jobs.csv', 'w', newline='') as csvfile:
     jobwriter = csv.DictWriter(csvfile, fieldnames=field_names)
