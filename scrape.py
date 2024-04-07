@@ -49,7 +49,8 @@ for i in range(max_pages):
     # all jobs have a job_seen_beacon
     # iterate over the results (jobs) - iterating over each job 
     # used webDriverWait to accelerate the search
-    jobs = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "job_seen_beacon")))
+    jobs_container = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "mosaic-jobResults")))
+    jobs = jobs_container.find_elements(By.CLASS_NAME, "job_seen_beacon")
     for j in jobs:
         try:
             job_title = j.find_element(By.CLASS_NAME, "jobTitle")
