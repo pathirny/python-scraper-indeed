@@ -41,18 +41,15 @@ max_pages = int(amount_of_jobs.split(' ')[0])//15
 # this iterates over each page on the search
 
 for i in range(max_pages):
-
-    start_index = i * max_pages
     # this loads the URL and iterates over each page - max_pages 
-    driver.get(f"{url}&start={start_index}") 
+    driver.get(f"{url}&start={i * max_pages}") 
     # have to verify that program is human
     # this gets the mosaicResults
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
     # all jobs have a job_seen_beacon
     # iterate over the results (jobs) - iterating over each job 
     # used webDriverWait to accelerate the search
-    jobs_container = WebDriverWait(driver, 10).until(EC.presence_of_all_element_located((By.ID, "mosaic-jobResults")))
-    jobs = jobs_container.find_elements(By.CLASS_NAME, "job-seen-beacon")
+    jobs = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "job_seen_beacon")))
     for j in jobs:
         try:
             job_title = j.find_element(By.CLASS_NAME, "jobTitle")
