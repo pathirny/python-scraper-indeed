@@ -52,10 +52,9 @@ for i in range(max_pages):
     # all jobs have a job_seen_beacon
     # iterate over the results (jobs) - iterating over each job 
     jobs = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "job_seen_beacon")))
-
     for j in jobs:
         try:
-            job_title = j.find_element(By.CLASS_NAME, "jobTitle")
+            job_title = WebDriverWait(driver, 10).until(EC.presence_of_all_element_located((By.CLASS_NAME, "jobTitle")))
             job_link = job_title.find_element(By.TAG_NAME, "a").get_attribute("href")
             job_id = job_title.find_element(By.TAG_NAME, "a").get_attribute("id")
             job_title_text = job_title.text
