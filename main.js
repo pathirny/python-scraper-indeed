@@ -22,6 +22,7 @@ async function getData() {
                 <li>${item.Company_Name}</li>
                 <li>${item.Location}</li>
                 <li>${item.Salary}</li>
+                <button>+</button>
               </ul>
         </a>
         `;
