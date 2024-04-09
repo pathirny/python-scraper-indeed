@@ -43,7 +43,7 @@ for i in range(max_pages):
     # this loads the URL and iterates over each page - max_pages 
     driver.get(f"{url}&start={i * max_pages}")
     if i == 0:
-        time.sleep(5)
+        time.sleep(3.5)
     jobs_container = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "mosaic-jobResults")))
     # have to verify that program is human
     # this gets the mosaicResults
