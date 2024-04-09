@@ -40,9 +40,9 @@ amount_of_jobs = driver.find_element(By.CLASS_NAME, 'jobsearch-JobCountAndSortPa
 max_pages = int(amount_of_jobs.split(' ')[0])//15
 # this iterates over each page on the search
 
-for i in range(10):
+for i in range(max_pages):
     # this loads the URL and iterates over each page - max_pages 
-    driver.get(f"{url}&start={i * 10}") 
+    driver.get(f"{url}&start={i * max_pages}") 
     # have to verify that program is human
     # this gets the mosaicResults
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
@@ -53,12 +53,11 @@ for i in range(10):
     jobs = jobs_container.find_elements(By.CLASS_NAME, "job_seen_beacon")
     for j in jobs:
         try:
-            job_title = j.find_element(By.CLASS_NAME, "jobTitle")
+            job_title = j.find_element(By.CLASS_NAME, "jobTitle").text
             job_link = job_title.find_element(By.TAG_NAME, "a").get_attribute("href")
             job_id = job_title.find_element(By.TAG_NAME, "a").get_attribute("id")
-            job_title_text = job_title.text
         except NoSuchElementException:
-            job_title_text = "None"
+            job_title = "None"
             job_link = "None"
             job_id = "None"
         
@@ -98,23 +97,23 @@ for job, sal in zip(job_list, salary):
     job_dict['Salary'] = sal
     result.append(job_dict)
 
-json_result = json.dumps(result)
-field_names = list(fields)
-with open('jobs.csv', 'w', newline='') as csvfile:
-    jobwriter = csv.DictWriter(csvfile, fieldnames=field_names)
-    jobwriter.writeheader()
+# json_result = json.dumps(result)
+# field_names = list(fields)
+# with open('jobs.csv', 'w', newline='') as csvfile:
+#     jobwriter = csv.DictWriter(csvfile, fieldnames=field_names)
+#     jobwriter.writeheader()
     
-    for job in result:
-        jobwriter.writerow(job)
+#     for job in result:
+#         jobwriter.writerow(job)
 
-app = Flask(__name__)
-CORS(app, support_credentials=True)
+# app = Flask(__name__)
+# CORS(app, support_credentials=True)
 
-@app.route("/", methods=['GET'])
-@cross_origin(supports_credentials=True)
-def indeedData():
-    json_result = json.dumps(result)
-    return Response(json_result, content_type='application/json')
+# @app.route("/", methods=['GET'])
+# @cross_origin(supports_credentials=True)
+# def indeedData():
+#     json_result = json.dumps(result)
+#     return Response(json_result, content_type='application/json')
 
-if __name__ == '__main__':
-    app.run(port=5000)
+# if __name__ == '__main__':
+#     app.run(port=5000)
