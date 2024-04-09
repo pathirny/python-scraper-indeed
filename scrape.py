@@ -42,6 +42,7 @@ max_pages = int(amount_of_jobs.split(' ')[0])//15
 for i in range(max_pages):
     # this loads the URL and iterates over each page - max_pages 
     driver.get(f"{url}&start={i * max_pages}")
+    time.sleep(10)
     # have to verify that program is human
     # this gets the mosaicResults
     job_page = driver.find_element(By.ID, "mosaic-jobResults")
