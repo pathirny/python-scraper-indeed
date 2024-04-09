@@ -43,7 +43,7 @@ for i in range(max_pages):
     # this loads the URL and iterates over each page - max_pages 
     driver.get(f"{url}&start={i * max_pages}")
     if i == 0:
-        time.sleep(3)
+        time.sleep(5)
     jobs_container = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "mosaic-jobResults")))
     # have to verify that program is human
     # this gets the mosaicResults
@@ -93,7 +93,7 @@ print("Amount of jobs: ", amount_of_jobs)
 print("Max amount of pages for this search: ", max_pages)
 
 result = []
-print(job_list)
+
 for job, sal in zip(job_list, salary):
     job_dict = dict(zip(fields, job))
     job_dict['Salary'] = sal
