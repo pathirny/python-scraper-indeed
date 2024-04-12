@@ -44,11 +44,10 @@ for i in range(max_pages):
     driver.get(f"{url}&start={i * max_pages}")
     # even with a 10 second wait it wont load the missing items
     if i == 0:
-        time.sleep(10)
+        time.sleep(15)
+    # this gets the mosaicResults
     jobs_container = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "mosaic-jobResults")))
     # have to verify that program is human
-    # this gets the mosaicResults
-    job_page = driver.find_element(By.ID, "mosaic-jobResults")
     # all jobs have a job_seen_beacon
     # iterate over the results (jobs) - iterating over each job 
     # used webDriverWait to accelerate the search
@@ -59,6 +58,7 @@ for i in range(max_pages):
             job_link = job_title.find_element(By.TAG_NAME, "a").get_attribute("href")
             job_id = job_title.find_element(By.TAG_NAME, "a").get_attribute("id")
             job_title = job_title.text
+            print(job_title)
         except NoSuchElementException:
             job_title = "None"
             job_link = "None"
