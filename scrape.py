@@ -44,7 +44,7 @@ for i in range(max_pages):
     driver.get(f"{url}&start={i * max_pages}")
     # even with a 10 second wait it wont load the missing items
     if i == 0:
-        time.sleep(15)
+        time.sleep(20)
     # this gets the mosaicResults
     jobs_container = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "mosaic-jobResults")))
     # have to verify that program is human
