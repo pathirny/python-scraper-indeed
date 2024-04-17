@@ -43,6 +43,7 @@ for i in range(max_pages):
     # this loads the URL and iterates over each page - max_pages 
     driver.get(f"{url}&start={i * max_pages}")
     # even with a 10 second wait it wont load the missing items
+    # sometimes it scrapes perfectly with 10 seconds wait
     if i == 0:
         time.sleep(10)
     # this gets the mosaicResults
