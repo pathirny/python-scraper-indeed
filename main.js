@@ -38,5 +38,6 @@ async function getData() {
 // **Saved Jobs**
 // use the data from the API to push certain items to a new list
 // need to find a SQL database to store saved jobs
+// will be displayed when user clicks on saved jobs
 
 getData();
