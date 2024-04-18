@@ -31,7 +31,17 @@ nav {
   height: 6vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+}
+.savedJobs {
+  padding: 0.8rem;
+  background-color: aliceblue;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+.savedJobs:hover {
+  scale: 1.1;
+  transition: 0.5s;
 }
 input {
   margin-left: 1rem;
