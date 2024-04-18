@@ -35,5 +35,8 @@ async function getData() {
     console.error("Error fetching data:", error);
   }
 }
+// **Saved Jobs**
+// use the data from the API to push certain items to a new list
+
 
 getData();
