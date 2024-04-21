@@ -1,5 +1,5 @@
 let jobs = document.getElementById("indiviudal-job");
-const jobsContainer = document.getElementById("jobs");
+const jobsContainer = document.getElementById("listOfJobs");
 
 async function getData() {
   try {
@@ -14,15 +14,17 @@ async function getData() {
 
     const showInHtml = data.map((item) => {
       return `
+      <div class="jobs">
       <a href=${item.URL} target=”_blank”>
-        <ul class="jobs">
+        <ul>
                 <li>${item.job_title}</li>
                 <li>${item.Company_Name}</li>
                 <li>${item.Location}</li>
                 <li>${item.Salary}</li>
-                <button class="addToSaved">+</button>
               </ul>
         </a>
+        <button class="addToSaved">+</button>
+        </div>
         `;
     });
 
