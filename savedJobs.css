@@ -3,16 +3,33 @@ body {
     margin: 0;
     overflow: hidden;
     background-color: #70c1b3;
-  }
+}
   
-  * {
+* {
     font-family: Roboto, sans-serif;
     color: black;
-  }
+}
   
-  header {
+header {
     width: 100vw;
     height: 6vh;
     background-color: #247ba0;
     border-radius: 0px 0px 30px 30px;
-  }
+}
+nav {
+    width: 100vw;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+button{
+    padding: 0.8rem;
+    background-color: aliceblue;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+button:hover{
+    scale: 1.1;
+  transition: 0.5s;
+}
