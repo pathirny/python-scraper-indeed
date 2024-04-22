@@ -11,10 +11,10 @@ async function getData() {
     }
 
     let data = await response.json(); // Parse the response body as JSON
-
+    
     const showInHtml = data.map((item) => {
       return `
-      <div class="jobs">
+      <div class="jobs" id=${item.job_id}>
       <a href=${item.URL} target=”_blank”>
         <ul>
                 <li>${item.job_title}</li>
@@ -29,11 +29,14 @@ async function getData() {
     });
 
     jobsContainer.innerHTML = showInHtml.join("");
+    const addToSaved = document.querySelectorAll('.addToSaved')
+    addToSaved.forEach(button =>{
+      button.addEventListener('click', function(){
+        console.log("Worked")
+      })
+    })
 
-    let addToSaved = document.querySelectorAll("addToSaved");
-    addToSaved.addEventListener("click", function () {
-      alert("hello");
-    });
+
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -45,3 +48,4 @@ async function getData() {
 // will be displayed when user clicks on saved jobs
 
 getData();
+

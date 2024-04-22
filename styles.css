@@ -72,6 +72,7 @@ li {
 }
 .jobs ul{
   display: flex;
+  align-items: center;
   min-height: 5rem;
   max-width: 45vw;
 }
