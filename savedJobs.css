@@ -34,13 +34,14 @@ button:hover{
   transition: 0.5s;
 }
 .savedJobsContainer{
-    width: 90vw;
+    width: 80vw;
     background-color: aliceblue;
     height: 90vh;
     margin:  2rem auto 2rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 25px;
 }
 li{
     list-style: none;
