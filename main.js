@@ -35,6 +35,7 @@ async function getData() {
         console.log(button)
         // Access the parent job listing element's ID
         // need to fix the job id so it gets correct data
+        // access the parent of the button element
         const jobId = button.id;
         console.log(jobId)
         // Find the corresponding job data based on the ID
