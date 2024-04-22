@@ -30,11 +30,17 @@ async function getData() {
 
     jobsContainer.innerHTML = showInHtml.join("");
     const addToSaved = document.querySelectorAll('.addToSaved')
-    addToSaved.forEach(button =>{
-      button.addEventListener('click', function(){
-        console.log("Worked")
-      })
-    })
+    addToSaved.forEach(button => {
+      button.addEventListener('click', function() {
+        // Access the parent job listing element's ID
+        const jobId = button.id;
+        console.log(jobId)
+        // Find the corresponding job data based on the ID
+        const jobData = data.find(item => item.job_id === jobId);
+        // Access the Company_Name property from the job data and log it
+        console.log(jobData.Company_Name);
+      });
+    });
 
 
   } catch (error) {
