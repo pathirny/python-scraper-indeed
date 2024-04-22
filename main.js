@@ -32,7 +32,9 @@ async function getData() {
     const addToSaved = document.querySelectorAll('.addToSaved')
     addToSaved.forEach(button => {
       button.addEventListener('click', function() {
+        console.log(button)
         // Access the parent job listing element's ID
+        // need to fix the job id so it gets correct data
         const jobId = button.id;
         console.log(jobId)
         // Find the corresponding job data based on the ID
